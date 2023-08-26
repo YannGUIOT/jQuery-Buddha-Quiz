@@ -25,7 +25,7 @@ body {
 
 .question {
   position: absolute;
-  top: 30px;
+  top: 85px;
   color: rgb(59, 12, 6);
   font-weight: 600;
   font-size: x-large;
@@ -34,8 +34,8 @@ body {
 
 .options {
   position: absolute;
-  top: 530px;
-  color: antiquewhite;
+  top: 510px;
+  color: rgb(255, 247, 236);
   font-family: 'Gluten';
   font-weight: 600;
   height: 100px;
