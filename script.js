@@ -1,13 +1,12 @@
 
 
-$(document).ready(function() {
+$(document).ready(function() {  // fonction éxécutée après le chargement du document HTML
 
-   // Cette fonction s'exécute lorsque le document HTML est entièrement chargé
-
-
-
+  let isStart = false;
   let currentQuestionIndex = 0;
-  const questions = quiz; // Assignez votre tableau de questions ici
+  const questions = quiz;
+
+  $('.next-btn').text('Start Quiz');
 
   const displayQuestion = (index) => {
     const question = questions[index];
@@ -25,30 +24,44 @@ $(document).ready(function() {
       if (selectedOption === question.answer) {
         $('.result').text("BRAVO !");
       } else {
-        $('.result').text("MAUVAISE RÉPONSE ! c'était " + question.answer + " !");
+        $('.result').text("RATÉ !");
       }
       $('.more').text(question.more);
-    });
+    });    
   }
 
-  $('.next-btn').click(function() {
-    // Cette fonction est déclenchée lorsque le bouton "Suivant" est cliqué
+  $('.next-btn').click(function() {  // lorsque le bouton next-btn est cliqué
 
-    currentQuestionIndex++;
-
-    $('.result').text('');
-    $('.more').text('');
-
-    if (currentQuestionIndex < questions.length) {
+    if((isStart == false) || (currentQuestionIndex == questions.length)) { 
+      let currentQuestionIndex = 0;
+      isStart = true;
+      $('.next-btn').text('Suivant');
+      cleanAllDisplay();
       displayQuestion(currentQuestionIndex);
+
     } else {
-      $('.question').text('');
-      $('.more').html('<p>QUIZ TERMINÉ !</p>');
+
+      currentQuestionIndex++;
+
+      cleanAllDisplay();
+
+      if (currentQuestionIndex < questions.length) {
+        displayQuestion(currentQuestionIndex);
+      } else {
+        $('.question').text('');
+        $('.more').html('<p>QUIZ TERMINÉ !</p>');
+        $('.next-btn').text('Recommencer');
+      }
     }
   });
 
-  // Affichez la première question au chargement de la page
-  displayQuestion(currentQuestionIndex);
+  const cleanAllDisplay = () => {
+    $('.question').text('');
+    $('.options').html('');
+    $('.result').text('');
+    $('.more').text('');
+  }
+  
 });
 
 
@@ -59,18 +72,24 @@ const quiz = [
     "question": "Quelle est l'origine de toutes nos souffrances ?",
     "options": ["L'Orgueil", "La Paresse", "Le Déni", "Le Jugement"],
     "answer": "L'Orgueil",
-    "more": "L'Orgueil c'est 'Je voudrais que', dès lors que la situation n'est pas comme 'Je voudrais', je n'accepte pas la situation et je suis responsable de cette souffrance."
+    "more": "L'Orgueil c'est 'JE voudrais que'. Dès lors que la situation n'est pas comme 'JE voudrais', je n'accepte pas la situation et je suis responsable de cette souffrance."
   },
   {
     "question": "Quelle est la couleur du chakra Racine ?",
     "options": ["Marron", "Orange", "Rouge", "Jaune"],
     "answer": "Rouge",
-    "more": "La couleur du chakra Racine, dit '!!!!' en sanscrit, est rouge vif."
+    "more": "La couleur du chakra Racine, Muladhara en sanscrit, est rouge vif."
   },
   {
     "question": "Quelle est la couleur du chakra Sacré ?",
     "options": ["Violet", "Orange", "Bleu", "Vert"],
     "answer": "Orange",
-    "more": "La couleur du chakra Sacrée, dit '!!!!' en sanscrit, est Orange vif."
+    "more": "La couleur du chakra Sacrée, Svadhisthana en sanscrit, est Orange vif."
+  },
+  {
+    "question": "Quelle est la couleur du chakra du Plexus Solaire ?",
+    "options": ["Jaune", "Orange", "Vert", "Indigo"],
+    "answer": "Jaune",
+    "more": "La couleur du chakra du Plexus Solaire, Manipura en sanscrit, est Jaune vif."
   }
 ];
