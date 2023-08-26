@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(44, 7, 2);
+}
+
+.quiz-container {
+  width: 800px;
+  height: 800px;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgb(255, 255, 255);
+  background-image: url('./img/buddha-quiz.jpg'); /* Chemin vers votre image */
+  background-size: cover; /* Échelle de l'image pour couvrir la div */
+  background-position: center; /* Position de l'image dans la div */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.question {
+  position: absolute;
+  top: 30px;
+  color: rgb(59, 12, 6);
+  font-weight: 600;
+  font-size: x-large;
+  font-family: 'Phudu';
+}
+
+.options {
+  position: absolute;
+  top: 530px;
+  color: antiquewhite;
+  font-family: 'Gluten';
+  font-weight: 600;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.next-btn {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  font-family: 'Architects Daughter';
+  font-weight: bold;
+  font-size: large;
+}
