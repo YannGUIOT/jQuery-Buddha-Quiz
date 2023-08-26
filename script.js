@@ -51,8 +51,9 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
       if (currentQuestionIndex < questions.length) {
         displayQuestion(currentQuestionIndex);
       } else {
+        const note = ((nbGoodAnswers / nbQuestions)*100).toFixed();
         $('.question').text('');
-        $('.more').html(`<p>QUIZ TERMINÉ !</p><p>Résultat: ${nbGoodAnswers} / ${nbQuestions}</p>`);
+        $('.result').html(`<p>QUIZ TERMINÉ !</p><p>Résultat: <strong>${note} %</strong></p><p>${nbGoodAnswers} / ${nbQuestions}</p>`);
         $('.next-btn').text('Recommencer');
       }
     }
