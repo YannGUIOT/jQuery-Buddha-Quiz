@@ -27,7 +27,7 @@ $(document).ready(function() {
   let currentQuestionIndex = 0;
   const questions = quiz; // Assignez votre tableau de questions ici
 
-  function displayQuestion(index) {
+  const displayQuestion = (index) => {
     const question = questions[index];
     $('.question').text(question.question);
     

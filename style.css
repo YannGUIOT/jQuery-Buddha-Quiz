@@ -14,7 +14,7 @@ body {
   border: 3px solid rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 0 0 15px rgb(255, 255, 255);
-  background-image: url('./img/buddha-quiz.jpg'); /* Chemin vers votre image */
+  background-image: url('./img/buddha-quiz-800x800.jpg'); /* Chemin vers votre image */
   background-size: cover; /* Échelle de l'image pour couvrir la div */
   background-position: center; /* Position de l'image dans la div */
   display: flex;
