@@ -22,7 +22,7 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
     }).join('');
     $('.options').html(optionsHtml);
 
-    // Ajoutez un gestionnaire d'événements pour les options de réponse
+    //** ANSWERS GESTION **//
     $('input[name="answer"]').change(function() {
       $('.options').html('');
       const selectedOption = $(this).val();
@@ -37,7 +37,8 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
     });    
   }
 
-  $('.next-btn').click(function() {  // lorsque le bouton next-btn est cliqué
+  //** BUTTON GESTION **//
+  $('.next-btn').click(function() {
 
     if((isStart == false) || (currentQuestionIndex == questions.length)) { 
       let currentQuestionIndex = 0;
