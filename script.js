@@ -60,7 +60,8 @@ $(document).ready(function() {
     if (currentQuestionIndex < questions.length) {
       displayQuestion(currentQuestionIndex);
     } else {
-      $('.result').html('<p>QUIZ TERMINÉ !</p>');
+      $('.question').text('');
+      $('.more').html('<p>QUIZ TERMINÉ !</p>');
     }
   });
 
