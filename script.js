@@ -38,13 +38,14 @@ $(document).ready(function() {
 
     // Ajoutez un gestionnaire d'événements pour les options de réponse
     $('input[name="answer"]').change(function() {
+      $('.options').html('');
       const selectedOption = $(this).val();
       if (selectedOption === question.answer) {
-        $('.result-info').text("BRAVO !");
+        $('.result').text("BRAVO !");
       } else {
-        $('.result-info').text("MAUVAISE RÉPONSE ! c'était " + question.answer + " !");
+        $('.result').text("MAUVAISE RÉPONSE ! c'était " + question.answer + " !");
       }
-      $('.more-info').text(question.more);
+      $('.more').text(question.more);
     });
   }
 
@@ -53,13 +54,13 @@ $(document).ready(function() {
 
     currentQuestionIndex++;
 
-    $('.result-info').text('');
-    $('.more-info').text('');
+    $('.result').text('');
+    $('.more').text('');
 
     if (currentQuestionIndex < questions.length) {
       displayQuestion(currentQuestionIndex);
     } else {
-      $('.quiz-container').html('<p>Quiz terminé !</p>');
+      $('.result').html('<p>QUIZ TERMINÉ !</p>');
     }
   });
 

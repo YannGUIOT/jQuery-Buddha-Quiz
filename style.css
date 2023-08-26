@@ -5,7 +5,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(44, 7, 2);
+  background-color: #330300;
 }
 
 .quiz-container {
@@ -14,7 +14,7 @@ body {
   border: 3px solid rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 0 0 15px rgb(255, 255, 255);
-  background-image: url('./img/buddha-quiz-800x800.jpg');
+  background-image: url('./img/buddha-quiz-800x800-by.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -26,7 +26,7 @@ body {
 .question {
   position: absolute;
   top: 85px;
-  color: rgb(59, 12, 6);
+  color: #330300;
   font-weight: 600;
   font-size: x-large;
   font-family: 'Phudu';
@@ -34,14 +34,32 @@ body {
 
 .options {
   position: absolute;
-  top: 510px;
+  top: 490px;
   color: rgb(255, 247, 236);
   font-family: 'Gluten';
   font-weight: 600;
+  font-size: x-large;
   height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.result {
+  position: absolute;
+  top: 480px;
+  color: rgb(255, 247, 236);
+  font-family: 'Architects Daughter';
+  font-weight: bold;
+}
+
+.more {
+  position: absolute;
+  top: 520px;
+  width: 430px;
+  color: rgb(255, 247, 236);
+  font-family: 'Architects Daughter';
+  text-align: center;
 }
 
 .next-btn {
