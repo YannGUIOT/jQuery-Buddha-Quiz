@@ -5,6 +5,8 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
   let isStart = false;
   let currentQuestionIndex = 0;
   const questions = quiz;
+  const nbQuestions = questions.length;
+  let nbGoodAnswers = 0;
 
   $('.next-btn').text('Start Quiz');
 
@@ -23,6 +25,7 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
       const selectedOption = $(this).val();
       if (selectedOption === question.answer) {
         $('.result').text("BRAVO !");
+        nbGoodAnswers++;
       } else {
         $('.result').text("RATÉ !");
       }
@@ -49,7 +52,7 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
         displayQuestion(currentQuestionIndex);
       } else {
         $('.question').text('');
-        $('.more').html('<p>QUIZ TERMINÉ !</p>');
+        $('.more').html(`<p>QUIZ TERMINÉ !</p><p>Résultat: ${nbGoodAnswers} / ${nbQuestions}</p>`);
         $('.next-btn').text('Recommencer');
       }
     }
