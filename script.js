@@ -11,6 +11,9 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
   $('.next-btn').text('Start Quiz');
 
   const displayQuestion = (index) => {
+
+    $('.next-btn').hide();
+
     const question = questions[index];
     $('.question').text(question.question);
     
@@ -30,6 +33,7 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
         $('.result').text("RATÉ !");
       }
       $('.more').text(question.more);
+      $('.next-btn').show();
     });    
   }
 
@@ -52,8 +56,13 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
         displayQuestion(currentQuestionIndex);
       } else {
         const note = ((nbGoodAnswers / nbQuestions)*100).toFixed();
+        const finish = `
+          <p>Q U I Z &nbsp; T E R M I N É &nbsp; !</p>
+          <p>Résultat: &nbsp;<strong>${note} %</strong></p>
+          <p>${nbGoodAnswers} / ${nbQuestions}</p>
+        `;
         $('.question').text('');
-        $('.result').html(`<p>QUIZ TERMINÉ !</p><p>Résultat: <strong>${note} %</strong></p><p>${nbGoodAnswers} / ${nbQuestions}</p>`);
+        $('.result').html(finish);
         $('.next-btn').text('Recommencer');
       }
     }
