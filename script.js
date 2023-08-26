@@ -1,28 +1,10 @@
+
+
 $(document).ready(function() {
 
    // Cette fonction s'exécute lorsque le document HTML est entièrement chargé
 
-  const quiz = [
-    {
-      "question": "Quelle est l'origine de toutes nos souffrances ?",
-      "options": ["L'Orgueil", "La Paresse", "Le Déni", "Le Jugement"],
-      "answer": "L'Orgueil",
-      "more": "L'Orgueil c'est 'Je voudrais que', dès lors que la situation n'est pas comme 'Je voudrais', je n'accepte pas la situation et je suis responsable de cette souffrance."
-    },
-    {
-      "question": "Quelle est la couleur du chakra Racine ?",
-      "options": ["Marron", "Orange", "Rouge", "Jaune"],
-      "answer": "Rouge",
-      "more": "La couleur du chakra Racine, dit '!!!!' en sanscrit, est rouge vif."
-    },
-    {
-      "question": "Quelle est la couleur du chakra Sacré ?",
-      "options": ["Violet", "Orange", "Bleu", "Vert"],
-      "answer": "Orange",
-      "more": "La couleur du chakra Sacrée, dit '!!!!' en sanscrit, est Orange vif."
-    }
-    // Ajoutez d'autres questions ici
-  ];
+
 
   let currentQuestionIndex = 0;
   const questions = quiz; // Assignez votre tableau de questions ici
@@ -68,3 +50,27 @@ $(document).ready(function() {
   // Affichez la première question au chargement de la page
   displayQuestion(currentQuestionIndex);
 });
+
+
+//** QUIZ DATAS **/
+
+const quiz = [
+  {
+    "question": "Quelle est l'origine de toutes nos souffrances ?",
+    "options": ["L'Orgueil", "La Paresse", "Le Déni", "Le Jugement"],
+    "answer": "L'Orgueil",
+    "more": "L'Orgueil c'est 'Je voudrais que', dès lors que la situation n'est pas comme 'Je voudrais', je n'accepte pas la situation et je suis responsable de cette souffrance."
+  },
+  {
+    "question": "Quelle est la couleur du chakra Racine ?",
+    "options": ["Marron", "Orange", "Rouge", "Jaune"],
+    "answer": "Rouge",
+    "more": "La couleur du chakra Racine, dit '!!!!' en sanscrit, est rouge vif."
+  },
+  {
+    "question": "Quelle est la couleur du chakra Sacré ?",
+    "options": ["Violet", "Orange", "Bleu", "Vert"],
+    "answer": "Orange",
+    "more": "La couleur du chakra Sacrée, dit '!!!!' en sanscrit, est Orange vif."
+  }
+];
