@@ -1,8 +1,8 @@
 $(document).ready(function() {
   // GAME STATE
   let isStart = false;
-  let nbGoodAnswers = 0;
-  let currentQuestionIndex = 0;
+  let nbGoodAnswers;
+  let currentQuestionIndex;
 
   // SELECTORS
   const $question = $('.question');
@@ -32,7 +32,7 @@ $(document).ready(function() {
       optionElements[i].html(`<label><input type="radio" name="answer" value="${quiz[index].options[i]}"> ${quiz[index].options[i]}</label>`);
     }
 
-    // ANSWER GESTION
+    // ANSWER MANAGEMENT
     const $input = $('input[name="answer"]');
     $input.change(function() {
       const selectedOption = $(this).val();
@@ -49,16 +49,15 @@ $(document).ready(function() {
   }
 
 
-  // BUTTON GESTION
+  // BUTTON MANAGEMENT
   $nextBtn.on('click', () => {
-
     if( !isStart ) {
       initQuiz();
     } else if (currentQuestionIndex == quiz.length) { 
       resetQuiz();
     } else {
-      currentQuestionIndex++;
       cleanDisplays();
+      currentQuestionIndex++;
       if (currentQuestionIndex < quiz.length) {
         displayQuestion(currentQuestionIndex);
       } else {
@@ -67,12 +66,10 @@ $(document).ready(function() {
     }
   });
 
-
   // RESET QUIZ 
   const resetQuiz = () => {
     currentQuestionIndex = 0;
     nbGoodAnswers = 0;
-    $question.hide();
     displayQuestion(currentQuestionIndex);
   }
 
