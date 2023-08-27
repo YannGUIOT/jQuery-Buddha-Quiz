@@ -9,10 +9,12 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
   let nbGoodAnswers = 0;
 
   $('.next-btn').text('Start Quiz');
+  $('.question').hide();
 
   const displayQuestion = (index) => {
 
     $('.next-btn').hide();
+    $('.question').show();
 
     const question = questions[index];
     $('.question').text(question.question);
