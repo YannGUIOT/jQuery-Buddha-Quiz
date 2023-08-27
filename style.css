@@ -60,10 +60,11 @@ body {
 
 .badAnswer {
   position: absolute;
-  top: 140px;
+  top: 145px;
   text-align: center;
   color: red;
   text-shadow: 0 0 1px black;
+  transform: rotate(-45deg);
 }
 
 .option1 {
