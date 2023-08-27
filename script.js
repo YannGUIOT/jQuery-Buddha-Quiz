@@ -13,6 +13,9 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
 
   const displayQuestion = (index) => {
 
+    cleanAllDisplay();
+    cleanOptions();
+
     $('.next-btn').text('Suivant');
     $('.next-btn').hide();
     $('.question').show();
@@ -28,12 +31,14 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
 
     //** ANSWERS GESTION **//
     $('input[name="answer"]').change(function() {
-      cleanOptions();
       const selectedOption = $(this).val();
+      cleanOptions();
       if (selectedOption === question.answer) {
+        $('.goodAnswer').text(question.answer);
         $('.result').text("BRAVO !");
         nbGoodAnswers++;
       } else {
+        $('.badAnswer').text(selectedOption);
         $('.result').text("RATÉ !");
       }
       $('.more').text(question.more);
@@ -47,7 +52,6 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
     if((isStart == false) || (currentQuestionIndex == questions.length)) { 
       currentQuestionIndex = 0;
       isStart = true;
-      cleanAllDisplay();
       displayQuestion(currentQuestionIndex);
 
     } else {
@@ -65,7 +69,6 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
           <p>Réussite: &nbsp;<strong>${note} %</strong></p>
           <p>Bonnes réponses: &nbsp;${nbGoodAnswers} / ${nbQuestions}</p>
         `;
-        $('.question').text('');
         $('.result').text('Q U I Z - T E R M I N É !');
         $('.more').html(score)
         $('.next-btn').text('Recommencer');
@@ -77,10 +80,8 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
     $('.question').text('');
     $('.result').text('');
     $('.more').text('');
-    $('.option1').html('');
-    $('.option2').html('');
-    $('.option3').html('');
-    $('.option4').html('');
+    $('.badAnswer').text('');
+    $('.goodAnswer').text('');
   }
 
   const cleanOptions = () => {
