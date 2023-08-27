@@ -31,7 +31,7 @@ body {
 
 .question {
   position: absolute;
-  top: 70px;
+  top: 55px;
   color: var(--background);
   font-weight: 600;
   font-size: x-large;
@@ -41,22 +41,6 @@ body {
   padding: 0.2em 1em 0.2em 1em ;
   box-shadow: 0 0 10px var(--background);
   background-color: rgba(255, 255, 255, 0.45);
-}
-
-.options {
-  position: absolute;
-  top: 490px;
-  color: var(--textColor);
-  font-family: 'Gluten';
-  font-size: x-large;
-  height: 105px;
-  width: 420px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.1em;
 }
 
 .answers {
@@ -112,27 +96,17 @@ label, button {
 
 label {
   padding: 0.4em;
+  border: 1px solid var(--background);
+  border-radius: 15px;
+  box-shadow: 0 0 4px var(--background);
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 label:hover {
   border: 2px solid var(--background);
   border-radius: 15px;
-  box-shadow: 0 0 8px var(--background);
-  background-color: rgba(255, 255, 255, 0.45);
-}
-
-.result {
-  position: absolute;
-  top: 405px;
-  width: 300px;
-  height: 50px;
-
-  color: var(--textColor);
-  font-family: 'Architects Daughter';
-  font-weight: bold;
-  font-size: 1.5em;
-  text-align: center;
-  background-color: var(--background);
+  box-shadow: 0 0 12px var(--background);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .more {

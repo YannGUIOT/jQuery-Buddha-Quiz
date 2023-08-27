@@ -10,7 +10,6 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
 
   $('.next-btn').text('Start Quiz');
   $('.question').hide();
-  $('.result').hide();
 
   const displayQuestion = (index) => {
 
@@ -20,7 +19,6 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
     $('.next-btn').text('Suivant');
     $('.next-btn').hide();
     $('.question').show();
-    $('.result').hide();
 
     const question = questions[index];
     $('.question').text(question.question);
@@ -35,14 +33,12 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
     $('input[name="answer"]').change(function() {
       const selectedOption = $(this).val();
       cleanOptions();
-      $('.result').show();
       if (selectedOption === question.answer) {
-        $('.goodAnswer').text(question.answer);
-        $('.result').text("BRAVO !");
+        $('.goodAnswer').text("BRAVO !");
+        // $('.result').text("BRAVO !").css("color", "greenyellow");
         nbGoodAnswers++;
       } else {
-        $('.badAnswer').text(selectedOption);
-        $('.result').text("RATÉ !");
+        $('.badAnswer').text("RATÉ");
       }
       $('.more').text(question.more);
       $('.next-btn').show();
@@ -66,7 +62,6 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
       if (currentQuestionIndex < questions.length) {
         displayQuestion(currentQuestionIndex);
       } else {
-        $('.result').hide();
         const note = ((nbGoodAnswers / nbQuestions)*100).toFixed();
         const score = `
           <p>Réussite: &nbsp;<strong>${note} %</strong></p>
@@ -81,7 +76,6 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
 
   const cleanAllDisplay = () => {
     $('.question').text('');
-    $('.result').text('');
     $('.more').text('');
     $('.badAnswer').text('');
     $('.goodAnswer').text('');
