@@ -58,12 +58,12 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
       } else {
         const note = ((nbGoodAnswers / nbQuestions)*100).toFixed();
         const finish = `
-          <p>Q U I Z &nbsp; T E R M I N É &nbsp; !</p>
-          <p>Résultat: &nbsp;<strong>${note} %</strong></p>
-          <p>${nbGoodAnswers} / ${nbQuestions}</p>
+          <p>Réussite: &nbsp;<strong>${note} %</strong></p>
+          <p>Bonnes réponses: &nbsp;${nbGoodAnswers} / ${nbQuestions}</p>
         `;
         $('.question').text('');
-        $('.result').html(finish);
+        $('.result').text('Q U I Z - T E R M I N É !');
+        $('.more').html(finish)
         $('.next-btn').text('Recommencer');
       }
     }
@@ -83,10 +83,10 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
 
 const quiz = [
   {
-    "question": "Quelle est l'origine de toutes nos souffrances ?",
+    "question": "Quelle est l'origine de nos souffrances ?",
     "options": ["L'Orgueil", "La Paresse", "Le Déni", "Le Jugement"],
     "answer": "L'Orgueil",
-    "more": "L'Orgueil c'est 'JE voudrais que'. Dès lors que la situation n'est pas comme 'JE voudrais', je n'accepte pas la situation et je suis responsable de cette souffrance."
+    "more": "L'ORGUEIL c'est => 'JE VOUDRAIS QUE'. Dès lors que la situation n'est pas comme 'JE VOUDRAIS', je n'accepte pas la situation et souffre de mon propre orgueil."
   },
   {
     "question": "Quelle est la couleur du chakra Racine ?",

@@ -30,11 +30,15 @@ body {
 
 .question {
   position: absolute;
-  top: 85px;
+  top: 70px;
   color: var(--background);
   font-weight: 600;
   font-size: x-large;
   font-family: 'Phudu';
+  border: 2px solid var(--background);
+  border-radius: 15px;
+  padding: 0.2em 1em 0.2em 1em ;
+  box-shadow: 0 0 10px var(--background);
 }
 
 .options {
@@ -73,7 +77,8 @@ label, button {
   top: 510px;
   width: 420px;
   color: var(--textColor);
-  font-family: 'Architects Daughter';
+  font-family: 'Nunito';
+  font-weight: 600;
   text-align: center;
   font-size: 1.3em;
 }
@@ -82,7 +87,13 @@ label, button {
   position: absolute;
   bottom: 30px;
   right: 30px;
-  font-family: 'Architects Daughter';
+  font-family: 'Phudu';
   font-weight: bold;
   font-size: large;
+}
+
+button {
+  background-color: var(--background);
+  color: var(--textColor);
+  border-radius: 8px;
 }
