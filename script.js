@@ -21,7 +21,6 @@ $(document).ready(function() {
   const displayQuestion = (index) => {
 
     cleanDisplays();
-    cleanOptions();
 
     $nextBtn.text('Suivant');
     $nextBtn.hide();
