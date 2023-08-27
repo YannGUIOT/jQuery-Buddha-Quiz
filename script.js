@@ -10,6 +10,7 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
 
   $('.next-btn').text('Start Quiz');
   $('.question').hide();
+  $('.result').hide();
 
   const displayQuestion = (index) => {
 
@@ -19,6 +20,7 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
     $('.next-btn').text('Suivant');
     $('.next-btn').hide();
     $('.question').show();
+    $('.result').hide();
 
     const question = questions[index];
     $('.question').text(question.question);
@@ -33,6 +35,7 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
     $('input[name="answer"]').change(function() {
       const selectedOption = $(this).val();
       cleanOptions();
+      $('.result').show();
       if (selectedOption === question.answer) {
         $('.goodAnswer').text(question.answer);
         $('.result').text("BRAVO !");
@@ -63,13 +66,13 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
       if (currentQuestionIndex < questions.length) {
         displayQuestion(currentQuestionIndex);
       } else {
-        $('.question').hide();
+        $('.result').hide();
         const note = ((nbGoodAnswers / nbQuestions)*100).toFixed();
         const score = `
           <p>Réussite: &nbsp;<strong>${note} %</strong></p>
           <p>Bonnes réponses: &nbsp;${nbGoodAnswers} / ${nbQuestions}</p>
         `;
-        $('.result').text('Q U I Z - T E R M I N É !');
+        $('.question').text('Q U I Z - T E R M I N É !');
         $('.more').html(score)
         $('.next-btn').text('Recommencer');
       }
