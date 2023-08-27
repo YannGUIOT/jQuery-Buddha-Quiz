@@ -43,7 +43,7 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
   $('.next-btn').click(function() {
 
     if((isStart == false) || (currentQuestionIndex == questions.length)) { 
-      let currentQuestionIndex = 0;
+      currentQuestionIndex = 0;
       isStart = true;
       $('.next-btn').text('Suivant');
       cleanAllDisplay();
@@ -58,6 +58,7 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
       if (currentQuestionIndex < questions.length) {
         displayQuestion(currentQuestionIndex);
       } else {
+        $('.question').hide();
         const note = ((nbGoodAnswers / nbQuestions)*100).toFixed();
         const score = `
           <p>Réussite: &nbsp;<strong>${note} %</strong></p>
