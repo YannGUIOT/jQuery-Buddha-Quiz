@@ -15,6 +15,8 @@ $(document).ready(function() {
   const $goodAnswer = $('.goodAnswer');
   const $badAnswer = $('.badAnswer');
 
+  const optionElements = [$option1, $option2, $option3, $option4];
+
   // FUNCTION DISPLAY QUESTION
   const displayQuestion = (index) => {
 
@@ -27,15 +29,14 @@ $(document).ready(function() {
     $question.show();
     $question.text(quiz[index].question);
 
-    $option1.html(`<label><input type="radio" name="answer" value="${quiz[index].options[0]}"> ${quiz[index].options[0]}</label>`);
-    $option2.html(`<label><input type="radio" name="answer" value="${quiz[index].options[1]}"> ${quiz[index].options[1]}</label>`);
-    $option3.html(`<label><input type="radio" name="answer" value="${quiz[index].options[2]}"> ${quiz[index].options[2]}</label>`);
-    $option4.html(`<label><input type="radio" name="answer" value="${quiz[index].options[3]}"> ${quiz[index].options[3]}</label>`);
-
+    for (let i = 0; i < optionElements.length; i++) {
+      optionElements[i].html(`<label><input type="radio" name="answer" value="${quiz[index].options[i]}"> ${quiz[index].options[i]}</label>`);
+    }
 
     //** ANSWERS GESTION **//
-    $('input[name="answer"]').on('change', () => {
+    $('input[name="answer"]').change(function() {
       const selectedOption = $(this).val();
+      console.log(selectedOption);
       cleanOptions();
       if (selectedOption === quiz[index].answer) {
         $goodAnswer.text("BRAVO !");
@@ -47,6 +48,8 @@ $(document).ready(function() {
       $nextBtn.show();
     });    
   }
+
+
 
   //** BUTTON GESTION **//
   $nextBtn.on('click', () => {
