@@ -20,7 +20,7 @@ $(document).ready(function() {
   // FUNCTION DISPLAY QUESTION
   const displayQuestion = (index) => {
 
-    cleanAllDisplay();
+    cleanDisplays();
     cleanOptions();
 
     $nextBtn.text('Suivant');
@@ -33,10 +33,9 @@ $(document).ready(function() {
       optionElements[i].html(`<label><input type="radio" name="answer" value="${quiz[index].options[i]}"> ${quiz[index].options[i]}</label>`);
     }
 
-    //** ANSWERS GESTION **//
+    // ANSWERS GESTION
     $('input[name="answer"]').change(function() {
       const selectedOption = $(this).val();
-      console.log(selectedOption);
       cleanOptions();
       if (selectedOption === quiz[index].answer) {
         $goodAnswer.text("BRAVO !");
@@ -51,7 +50,7 @@ $(document).ready(function() {
 
 
 
-  //** BUTTON GESTION **//
+  // BUTTON GESTION
   $nextBtn.on('click', () => {
 
     if( !isStart ) {
@@ -59,11 +58,8 @@ $(document).ready(function() {
     } else if (currentQuestionIndex == quiz.length) { 
       resetQuiz();
     } else {
-
       currentQuestionIndex++;
-
-      cleanAllDisplay();
-
+      cleanDisplays();
       if (currentQuestionIndex < quiz.length) {
         displayQuestion(currentQuestionIndex);
       } else {
@@ -71,8 +67,6 @@ $(document).ready(function() {
       }
     }
   });
-
-
 
   const showFinalScore = () => {
     const note = ((nbGoodAnswers / quiz.length)*100).toFixed();
@@ -102,7 +96,7 @@ $(document).ready(function() {
     $more.text('Bienvenue dans le Buddha Quiz, clique sur le boutton START QUIZ pour te mesurer aux connaissances du Buddha !');
   }
 
-  const cleanAllDisplay = () => {
+  const cleanDisplays = () => {
     $question.text('');
     $more.text('');
     $badAnswer.text('');
@@ -121,7 +115,7 @@ $(document).ready(function() {
 });
 
 
-//** QUIZ DATAS **/
+// QUIZ DATAS
 
 const quiz = [
   {
