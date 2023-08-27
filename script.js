@@ -1,11 +1,10 @@
-
-$(document).ready(function() {  // fonction éxécutée après le chargement du document HTML
-
+$(document).ready(function() {
+  // GAME STATE
   let isStart = false;
-  let currentQuestionIndex = 0;
-  const nbQuestions = quiz.length;
   let nbGoodAnswers = 0;
+  let currentQuestionIndex = 0;
 
+  // SELECTORS
   const $question = $('.question');
   const $option1 = $('.option1'); 
   const $option2 = $('.option2');
@@ -16,9 +15,7 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
   const $goodAnswer = $('.goodAnswer');
   const $badAnswer = $('.badAnswer');
 
-  $nextBtn.text('Start Quiz');
-  $question.hide();
-
+  // FUNCTION DISPLAY QUESTION
   const displayQuestion = (index) => {
 
     cleanAllDisplay();
@@ -26,8 +23,8 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
 
     $nextBtn.text('Suivant');
     $nextBtn.hide();
-    $question.show();
 
+    $question.show();
     $question.text(quiz[index].question);
 
     $option1.html(`<label><input type="radio" name="answer" value="${quiz[index].options[0]}"> ${quiz[index].options[0]}</label>`);
@@ -42,7 +39,6 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
       cleanOptions();
       if (selectedOption === quiz[index].answer) {
         $goodAnswer.text("BRAVO !");
-        // $('.result').text("BRAVO !").css("color", "greenyellow");
         nbGoodAnswers++;
       } else {
         $badAnswer.text("RATÉ");
@@ -53,9 +49,9 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
   }
 
   //** BUTTON GESTION **//
-  $nextBtn.click(function() {
+  $nextBtn.on('click', () => {
 
-    if((isStart == false) || (currentQuestionIndex == quiz.length)) { 
+    if( !isStart || (currentQuestionIndex == quiz.length)) { 
       currentQuestionIndex = 0;
       nbGoodAnswers = 0;
       isStart = true;
@@ -70,14 +66,7 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
       if (currentQuestionIndex < quiz.length) {
         displayQuestion(currentQuestionIndex);
       } else {
-        const note = ((nbGoodAnswers / nbQuestions)*100).toFixed();
-        const score = `
-          <p>Réussite: &nbsp;<strong>${note} %</strong></p>
-          <p>Bonnes réponses: &nbsp;${nbGoodAnswers} / ${nbQuestions}</p>
-        `;
-        $question.text('Q U I Z - T E R M I N É !');
-        $more.html(score)
-        $nextBtn.text('Recommencer');
+        showFinalScore();
       }
     }
   });
@@ -95,7 +84,37 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
     $option3.text('');
     $option4.text('');
   }
-  
+
+  const showFinalScore = () => {
+    const note = ((nbGoodAnswers / quiz.length)*100).toFixed();
+    const score = `
+      <p>Réussite: &nbsp;<strong>${note} %</strong></p>
+      <p>Bonnes réponses: &nbsp;${nbGoodAnswers} / ${quiz.length}</p>
+    `;
+    $question.text('Q U I Z - T E R M I N É !');
+    $more.html(score)
+    $nextBtn.text('Recommencer');
+  }
+
+  // RESET QUIZ 
+  const resetQuiz = () => {
+    currentQuestionIndex = 0;
+    nbGoodAnswers = 0;
+    cleanAllDisplay();
+    cleanOptions();
+    $question.hide();
+  }
+
+  const initQuiz = () => {
+    currentQuestionIndex = 0;
+    nbGoodAnswers = 0;
+    $nextBtn.text('Start Quiz');
+    $question.hide();
+    $more.text('Bienvenue dans le Buddha Quiz, clique sur le boutton START QUIZ pour te mesurer aux connaissances du Buddha !');
+  }
+
+  // START QUIZ
+  initQuiz();
 });
 
 
@@ -127,3 +146,4 @@ const quiz = [
     "more": "La couleur du chakra du Plexus Solaire, Manipura en sanscrit, est Jaune vif."
   }
 ];
+
