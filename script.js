@@ -34,7 +34,8 @@ $(document).ready(function() {
     }
 
     // ANSWERS GESTION
-    $('input[name="answer"]').change(function() {
+    const $input = $('input[name="answer"]');
+    $input.change(function() {
       const selectedOption = $(this).val();
       cleanOptions();
       if (selectedOption === quiz[index].answer) {
