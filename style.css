@@ -48,7 +48,7 @@ body {
   color: var(--textColor);
   font-family: 'Gluten';
   font-size: x-large;
-  height: 100px;
+  height: 105px;
   width: 420px;
   display: flex;
   flex-direction: column;
@@ -58,8 +58,50 @@ body {
   gap: 0.1em;
 }
 
+.answers {
+  color: var(--background);
+  font-family: 'Gluten';
+  font-size: x-large;
+  font-weight: 500;
+}
+
+.option1 {
+  position: absolute;
+  top: 180px;
+  right: 470px;
+}
+
+.option2 {
+  position: absolute;
+  top: 280px;
+  right: 530px;
+}
+
+.option3 {
+  position: absolute;
+  top: 180px;
+  left: 470px;
+}
+
+.option4 {
+  position: absolute;
+  top: 280px;
+  left: 530px;
+}
+
 label, button {
   cursor: pointer;
+}
+
+label {
+  padding: 0.4em;
+}
+
+label:hover, .selected {
+  border: 2px solid var(--background);
+  border-radius: 15px;
+  box-shadow: 0 0 8px var(--background);
+  background-color: rgba(255, 255, 255, 0.45);
 }
 
 .result {
@@ -90,6 +132,7 @@ label, button {
   font-family: 'Phudu';
   font-weight: bold;
   font-size: large;
+  padding: 0.3em;
 }
 
 button {

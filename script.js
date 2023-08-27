@@ -13,20 +13,22 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
 
   const displayQuestion = (index) => {
 
+    $('.next-btn').text('Suivant');
     $('.next-btn').hide();
     $('.question').show();
 
     const question = questions[index];
     $('.question').text(question.question);
-    
-    const optionsHtml = question.options.map(option => {
-      return `<label><input type="radio" name="answer" value="${option}"> ${option}</label><br>`;
-    }).join('');
-    $('.options').html(optionsHtml);
+
+    $('.option1').html(`<label><input type="radio" name="answer" value="${question.options[0]}"> ${question.options[0]}</label>`);
+    $('.option2').html(`<label><input type="radio" name="answer" value="${question.options[1]}"> ${question.options[1]}</label>`);
+    $('.option3').html(`<label><input type="radio" name="answer" value="${question.options[2]}"> ${question.options[2]}</label>`);
+    $('.option4').html(`<label><input type="radio" name="answer" value="${question.options[3]}"> ${question.options[3]}</label>`);
+
 
     //** ANSWERS GESTION **//
     $('input[name="answer"]').change(function() {
-      $('.options').html('');
+      cleanOptions();
       const selectedOption = $(this).val();
       if (selectedOption === question.answer) {
         $('.result').text("BRAVO !");
@@ -45,7 +47,6 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
     if((isStart == false) || (currentQuestionIndex == questions.length)) { 
       currentQuestionIndex = 0;
       isStart = true;
-      $('.next-btn').text('Suivant');
       cleanAllDisplay();
       displayQuestion(currentQuestionIndex);
 
@@ -74,9 +75,19 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
 
   const cleanAllDisplay = () => {
     $('.question').text('');
-    $('.options').html('');
     $('.result').text('');
     $('.more').text('');
+    $('.option1').html('');
+    $('.option2').html('');
+    $('.option3').html('');
+    $('.option4').html('');
+  }
+
+  const cleanOptions = () => {
+    $('.option1').html('');
+    $('.option2').html('');
+    $('.option3').html('');
+    $('.option4').html('');
   }
   
 });
