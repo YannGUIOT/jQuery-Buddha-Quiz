@@ -57,13 +57,13 @@ $(document).ready(function() {  // fonction éxécutée après le chargement du 
         displayQuestion(currentQuestionIndex);
       } else {
         const note = ((nbGoodAnswers / nbQuestions)*100).toFixed();
-        const finish = `
+        const score = `
           <p>Réussite: &nbsp;<strong>${note} %</strong></p>
           <p>Bonnes réponses: &nbsp;${nbGoodAnswers} / ${nbQuestions}</p>
         `;
         $('.question').text('');
         $('.result').text('Q U I Z - T E R M I N É !');
-        $('.more').html(finish)
+        $('.more').html(score)
         $('.next-btn').text('Recommencer');
       }
     }
