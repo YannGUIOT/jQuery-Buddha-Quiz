@@ -17,7 +17,7 @@ $(document).ready(function() {
 
   const optionElements = [$option1, $option2, $option3, $option4];
 
-  // FUNCTION DISPLAY QUESTION
+  // DISPLAY QUESTION
   const displayQuestion = (index) => {
 
     cleanDisplays();
@@ -33,7 +33,7 @@ $(document).ready(function() {
       optionElements[i].html(`<label><input type="radio" name="answer" value="${quiz[index].options[i]}"> ${quiz[index].options[i]}</label>`);
     }
 
-    // ANSWERS GESTION
+    // ANSWER GESTION
     const $input = $('input[name="answer"]');
     $input.change(function() {
       const selectedOption = $(this).val();
@@ -48,7 +48,6 @@ $(document).ready(function() {
       $nextBtn.show();
     });    
   }
-
 
 
   // BUTTON GESTION
@@ -69,6 +68,26 @@ $(document).ready(function() {
     }
   });
 
+
+  // RESET QUIZ 
+  const resetQuiz = () => {
+    currentQuestionIndex = 0;
+    nbGoodAnswers = 0;
+    $question.hide();
+    displayQuestion(currentQuestionIndex);
+  }
+
+  // INIT QUIZ 
+  const initQuiz = () => {
+    currentQuestionIndex = -1;
+    nbGoodAnswers = 0;
+    isStart = true;
+    $nextBtn.text('Start Quiz');
+    $question.hide();
+    $more.text('Bienvenue dans le Buddha Quiz, clique sur le boutton START QUIZ pour te mesurer aux connaissances du Buddha !');
+  }
+
+  // SHOW FINAL SCORE
   const showFinalScore = () => {
     const note = ((nbGoodAnswers / quiz.length)*100).toFixed();
     const score = `
@@ -80,23 +99,7 @@ $(document).ready(function() {
     $nextBtn.text('Recommencer');
   }
 
-  // RESET QUIZ 
-  const resetQuiz = () => {
-    currentQuestionIndex = 0;
-    nbGoodAnswers = 0;
-    $question.hide();
-    displayQuestion(currentQuestionIndex);
-  }
-
-  const initQuiz = () => {
-    currentQuestionIndex = -1;
-    nbGoodAnswers = 0;
-    isStart = true;
-    $nextBtn.text('Start Quiz');
-    $question.hide();
-    $more.text('Bienvenue dans le Buddha Quiz, clique sur le boutton START QUIZ pour te mesurer aux connaissances du Buddha !');
-  }
-
+  // CLEAN DISPLAYS
   const cleanDisplays = () => {
     $question.text('');
     $more.text('');
@@ -104,6 +107,7 @@ $(document).ready(function() {
     $goodAnswer.text('');
   }
 
+  //CLEAN OPTIONS
   const cleanOptions = () => {
     $option1.text('');
     $option2.text('');
