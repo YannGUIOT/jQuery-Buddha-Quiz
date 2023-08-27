@@ -34,7 +34,7 @@ $(document).ready(function() {
 
 
     //** ANSWERS GESTION **//
-    $('input[name="answer"]').change(function() {
+    $('input[name="answer"]').on('change', () => {
       const selectedOption = $(this).val();
       cleanOptions();
       if (selectedOption === quiz[index].answer) {
@@ -51,12 +51,10 @@ $(document).ready(function() {
   //** BUTTON GESTION **//
   $nextBtn.on('click', () => {
 
-    if( !isStart || (currentQuestionIndex == quiz.length)) { 
-      currentQuestionIndex = 0;
-      nbGoodAnswers = 0;
-      isStart = true;
-      displayQuestion(currentQuestionIndex);
-
+    if( !isStart ) {
+      initQuiz();
+    } else if (currentQuestionIndex == quiz.length) { 
+      resetQuiz();
     } else {
 
       currentQuestionIndex++;
@@ -71,19 +69,7 @@ $(document).ready(function() {
     }
   });
 
-  const cleanAllDisplay = () => {
-    $question.text('');
-    $more.text('');
-    $badAnswer.text('');
-    $goodAnswer.text('');
-  }
 
-  const cleanOptions = () => {
-    $option1.text('');
-    $option2.text('');
-    $option3.text('');
-    $option4.text('');
-  }
 
   const showFinalScore = () => {
     const note = ((nbGoodAnswers / quiz.length)*100).toFixed();
@@ -100,17 +86,31 @@ $(document).ready(function() {
   const resetQuiz = () => {
     currentQuestionIndex = 0;
     nbGoodAnswers = 0;
-    cleanAllDisplay();
-    cleanOptions();
     $question.hide();
+    displayQuestion(currentQuestionIndex);
   }
 
   const initQuiz = () => {
-    currentQuestionIndex = 0;
+    currentQuestionIndex = -1;
     nbGoodAnswers = 0;
+    isStart = true;
     $nextBtn.text('Start Quiz');
     $question.hide();
     $more.text('Bienvenue dans le Buddha Quiz, clique sur le boutton START QUIZ pour te mesurer aux connaissances du Buddha !');
+  }
+
+  const cleanAllDisplay = () => {
+    $question.text('');
+    $more.text('');
+    $badAnswer.text('');
+    $goodAnswer.text('');
+  }
+
+  const cleanOptions = () => {
+    $option1.text('');
+    $option2.text('');
+    $option3.text('');
+    $option4.text('');
   }
 
   // START QUIZ
