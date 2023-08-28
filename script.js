@@ -161,7 +161,7 @@ const quiz = [
   },
   {
     "question": "Quelle est la couleur du chakra Coronal ?",
-    "options": ["Blanc/Mauve", "Blanc Crème", "Argent", "Or"],
+    "options": ["Or", "Blanc Crème", "Argent", "Blanc/Mauve"],
     "answer": "Blanc/Mauve",
     "more": "La couleur du chakra Coronal, Sahasrara en sanscrit, est Blanc/Mauve."
   },
@@ -170,6 +170,12 @@ const quiz = [
     "options": ["L'alarme du réveil", "Le Café", "La Connaissance", "Les Psychotropes"],
     "answer": "La Connaissance",
     "more": "Seul la connaissance permet l'éveil."
+  },
+  {
+    "question": "Lorsque la Colère et la Souffrance cessent, ils laissent la place à ?",
+    "options": ["La Rancoeur", "L'Opulence", "La Paix et la Sérénité", "la Prospérité"],
+    "answer": "La Paix et la Sérénité",
+    "more": "Lorsque la Colère et la Souffrance cessent, ils laissent la place à la Paix et la Sérénité."
   }
 ];
 
