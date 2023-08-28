@@ -121,7 +121,7 @@ const quiz = [
     "question": "Quelle est l'origine de nos souffrances ?",
     "options": ["L'Orgueil", "La Paresse", "Le Déni", "Le Jugement"],
     "answer": "L'Orgueil",
-    "more": "L'ORGUEIL c'est => 'JE VOUDRAIS QUE'. Dès lors que la situation n'est pas comme 'JE VOUDRAIS', je n'accepte pas la situation et souffre de mon propre orgueil."
+    "more": "L'Orgueil c'est 'Je voudrais que'. Dès lors que la situation n'est pas comme 'Je voudrais', je n'accepte pas la situation et souffre de mon propre orgueil."
   },
   {
     "question": "Quelle est la couleur du chakra Racine ?",
@@ -140,6 +140,36 @@ const quiz = [
     "options": ["Jaune", "Orange", "Vert", "Indigo"],
     "answer": "Jaune",
     "more": "La couleur du chakra du Plexus Solaire, Manipura en sanscrit, est Jaune vif."
+  },
+  {
+    "question": "Quelle est la couleur du chakra du Coeur ?",
+    "options": ["Rouge", "Vert", "Rose", "Violet"],
+    "answer": "Vert",
+    "more": "La couleur du chakra du Coeur, Anahata en sanscrit, est Vert."
+  },
+  {
+    "question": "Quelle est la couleur du chakra de la Gorge ?",
+    "options": ["Marron", "Indigo", "Bleu Ciel", "Jaune"],
+    "answer": "Bleu Ciel",
+    "more": "La couleur du chakra de la Gorge, Vishuddha en sanscrit, est Bleu Ciel."
+  },
+  {
+    "question": "Quelle est la couleur du chakra du 3ème Oeil ?",
+    "options": ["Indigo", "Pastel", "Mauve", "Noir"],
+    "answer": "Indigo",
+    "more": "La couleur du chakra du 3ème Oeil, Ajna en sanscrit, est Indigo."
+  },
+  {
+    "question": "Quelle est la couleur du chakra Coronal ?",
+    "options": ["Blanc/Mauve", "Blanc Crème", "Argent", "Or"],
+    "answer": "Blanc/Mauve",
+    "more": "La couleur du chakra Coronal, Sahasrara en sanscrit, est Blanc/Mauve."
+  },
+  {
+    "question": "Qu'est-ce qui permet l'éveil ?",
+    "options": ["L'alarme du réveil", "Le Café", "La Connaissance", "Les Psychotropes"],
+    "answer": "La Connaissance",
+    "more": "Seul la connaissance permet l'éveil."
   }
 ];
 
