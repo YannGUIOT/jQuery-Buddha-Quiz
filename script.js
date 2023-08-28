@@ -21,24 +21,21 @@ $(document).ready(function() {
   const displayQuestion = (index) => {
 
     cleanDisplays();
-
     $nextBtn.text('Suivant');
     $nextBtn.hide();
-
     $question.show();
     $question.text(quiz[index].question);
 
     for (let i = 0; i < optionElements.length; i++) {
       optionElements[i].html(`<label><input type="radio" name="answer" value="${quiz[index].options[i]}"> ${quiz[index].options[i]}</label>`);
     }
-
-    displayOptions();
+    options('fadeToggle', 700);
 
     // ANSWER MANAGEMENT
     const $input = $('input[name="answer"]');
     $input.change(function() {
       const selectedOption = $(this).val();
-      cleanOptions();
+      options('fadeToggle', 700);
       if (selectedOption === quiz[index].answer) {
         $goodAnswer.text("BRAVO !");
         nbGoodAnswers++;
@@ -49,7 +46,6 @@ $(document).ready(function() {
       $nextBtn.show();
     });    
   }
-
 
   // BUTTON MANAGEMENT
   $nextBtn.on('click', () => {
@@ -83,6 +79,7 @@ $(document).ready(function() {
     $nextBtn.text('Start Quiz');
     $question.hide();
     $more.text('Bienvenue dans le Buddha Quiz, clique sur le boutton START QUIZ pour te mesurer aux connaissances du Buddha !');
+    options('hide');
   }
 
   // SHOW FINAL SCORE
@@ -105,21 +102,12 @@ $(document).ready(function() {
     $goodAnswer.text('');
   }
 
-  // CLEAN OPTIONS
-  const cleanOptions = () => {
-    $option1.fadeOut(800);
-    $option2.fadeOut(800);
-    $option3.fadeOut(800);
-    $option4.fadeOut(800);
+  // OPTIONS
+  const options = (func, tps) => {
+    optionElements.forEach((option) => {
+      option[func](tps);
+    });
   }
-
-    // DISPLAY OPTIONS
-    const displayOptions = () => {
-      $option1.fadeIn(1000);
-      $option2.fadeIn(1000);
-      $option3.fadeIn(1000);
-      $option4.fadeIn(1000);
-    }
 
   // START QUIZ
   initQuiz();
