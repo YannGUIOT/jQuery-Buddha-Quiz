@@ -32,6 +32,8 @@ $(document).ready(function() {
       optionElements[i].html(`<label><input type="radio" name="answer" value="${quiz[index].options[i]}"> ${quiz[index].options[i]}</label>`);
     }
 
+    displayOptions();
+
     // ANSWER MANAGEMENT
     const $input = $('input[name="answer"]');
     $input.change(function() {
@@ -103,13 +105,21 @@ $(document).ready(function() {
     $goodAnswer.text('');
   }
 
-  //CLEAN OPTIONS
+  // CLEAN OPTIONS
   const cleanOptions = () => {
-    $option1.text('');
-    $option2.text('');
-    $option3.text('');
-    $option4.text('');
+    $option1.fadeOut(800);
+    $option2.fadeOut(800);
+    $option3.fadeOut(800);
+    $option4.fadeOut(800);
   }
+
+    // DISPLAY OPTIONS
+    const displayOptions = () => {
+      $option1.fadeIn(1000);
+      $option2.fadeIn(1000);
+      $option3.fadeIn(1000);
+      $option4.fadeIn(1000);
+    }
 
   // START QUIZ
   initQuiz();
