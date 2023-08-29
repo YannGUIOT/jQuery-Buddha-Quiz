@@ -3,6 +3,7 @@ $(document).ready(function() {
   let isStart = false;
   let nbGoodAnswers;
   let currentQuestionIndex;
+  let shuffleTab = [];
 
   // SELECTORS
   const $question = $('.question');
@@ -20,14 +21,16 @@ $(document).ready(function() {
   // DISPLAY QUESTION
   const displayQuestion = (index) => {
 
+    const question = quiz[shuffleTab[index]-1];
+
     cleanDisplays();
     $nextBtn.text('Suivant');
     $nextBtn.hide();
     $question.show();
-    $question.text(quiz[index].question);
+    $question.text(question.question);
 
     for (let i = 0; i < optionElements.length; i++) {
-      optionElements[i].html(`<label><input type="radio" name="answer" value="${quiz[index].options[i]}"> ${quiz[index].options[i]}</label>`);
+      optionElements[i].html(`<label><input type="radio" name="answer" value="${question.options[i]}"> ${question.options[i]}</label>`);
     }
     options('fadeToggle', 700);
 
@@ -36,13 +39,13 @@ $(document).ready(function() {
     $input.change(function() {
       const selectedOption = $(this).val();
       options('fadeToggle', 700);
-      if (selectedOption === quiz[index].answer) {
+      if (selectedOption === question.answer) {
         $goodAnswer.text("BRAVO !");
         nbGoodAnswers++;
       } else {
         $badAnswer.text("RATÉ");
       }
-      $('.more').text(quiz[index].more);
+      $('.more').text(question.more);
       $nextBtn.show();
     });    
   }
@@ -68,6 +71,7 @@ $(document).ready(function() {
   const resetQuiz = () => {
     currentQuestionIndex = 0;
     nbGoodAnswers = 0;
+    shuffleQuiz();
     displayQuestion(currentQuestionIndex);
   }
 
@@ -76,6 +80,7 @@ $(document).ready(function() {
     currentQuestionIndex = -1;
     nbGoodAnswers = 0;
     isStart = true;
+    shuffleQuiz();
     $nextBtn.text('Start Quiz');
     $question.hide();
     $more.text('Bienvenue dans le Buddha Quiz, clique sur le boutton START QUIZ pour te mesurer aux connaissances du Buddha !');
@@ -107,6 +112,16 @@ $(document).ready(function() {
     optionElements.forEach((option) => {
       option[func](tps);
     });
+  }
+
+  const shuffleQuiz = () => {
+    for (let i = 0; i < quiz.length; i++) {
+      shuffleTab.push(i + 1);
+    }
+    for (let i = shuffleTab.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [shuffleTab[i], shuffleTab[j]] = [shuffleTab[j], shuffleTab[i]];
+    }
   }
 
   // START QUIZ
