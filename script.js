@@ -18,6 +18,19 @@ $(document).ready(function() {
 
   const optionElements = [$option1, $option2, $option3, $option4];
 
+  // OPTIONS
+  const options = (func, tps) => {
+    optionElements.forEach((option) => {
+      option[func](tps);
+    });
+  }
+
+  // INIT PAGE
+  $nextBtn.text('Start Quiz');
+  $question.hide();
+  $more.text('Bienvenue dans le Buddha Quiz, clique sur le boutton START QUIZ pour te mesurer aux connaissances du Buddha !');
+  options('hide');
+
   // DISPLAY QUESTION
   const displayQuestion = (index) => {
 
@@ -52,10 +65,8 @@ $(document).ready(function() {
 
   // BUTTON MANAGEMENT
   $nextBtn.on('click', () => {
-    if( !isStart ) {
+    if(( !isStart )||(currentQuestionIndex == quiz.length)) {
       initQuiz();
-    } else if (currentQuestionIndex == quiz.length) { 
-      resetQuiz();
     } else {
       cleanDisplays();
       currentQuestionIndex++;
@@ -67,24 +78,13 @@ $(document).ready(function() {
     }
   });
 
-  // RESET QUIZ 
-  const resetQuiz = () => {
-    currentQuestionIndex = 0;
-    nbGoodAnswers = 0;
-    shuffleQuiz();
-    displayQuestion(currentQuestionIndex);
-  }
-
   // INIT QUIZ 
   const initQuiz = () => {
-    currentQuestionIndex = -1;
+    currentQuestionIndex = 0;
     nbGoodAnswers = 0;
     isStart = true;
     shuffleQuiz();
-    $nextBtn.text('Start Quiz');
-    $question.hide();
-    $more.text('Bienvenue dans le Buddha Quiz, clique sur le boutton START QUIZ pour te mesurer aux connaissances du Buddha !');
-    options('hide');
+    displayQuestion(currentQuestionIndex);
   }
 
   // SHOW FINAL SCORE
@@ -107,13 +107,7 @@ $(document).ready(function() {
     $goodAnswer.text('');
   }
 
-  // OPTIONS
-  const options = (func, tps) => {
-    optionElements.forEach((option) => {
-      option[func](tps);
-    });
-  }
-
+  // SHUFFLE QUIZ 
   const shuffleQuiz = () => {
     for (let i = 0; i < quiz.length; i++) {
       shuffleTab.push(i + 1);
@@ -124,8 +118,6 @@ $(document).ready(function() {
     }
   }
 
-  // START QUIZ
-  initQuiz();
 });
 
 
